@@ -1,0 +1,30 @@
+{
+  "Castor": {
+    "archetype": "I: Concentric Nodal Shells",
+    "total_components": 6,
+    "max_eccentricity": 0.34,
+    "eta_M": 1.42e-07,
+    "matrix_weight_c_ii": 0.885
+  },
+  "Nu_Scorpii": {
+    "archetype": "I: Concentric Nodal Shells",
+    "total_components": 7,
+    "max_eccentricity": 0.56,
+    "eta_M": 2.11e-07,
+    "matrix_weight_c_ii": 0.942
+  },
+  "Kepler_47": {
+    "archetype": "III: Circumbinary Trapping",
+    "total_components": 5,
+    "max_eccentricity": 0.03,
+    "eta_M": 7.8e-09,
+    "matrix_weight_c_ii": 0.320
+  },
+  "GW_Orionis": {
+    "archetype": "III: Circumbinary Trapping",
+    "total_components": 3,
+    "max_eccentricity": 0.38,
+    "eta_M": 5.88e-07,
+    "matrix_weight_c_ii": 2.440
+  }
+}
