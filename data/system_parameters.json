@@ -1,0 +1,116 @@
+{
+  "systems": [
+    {
+      "name": "Castor",
+      "archetype": "I: Concentric Nodal Shells",
+      "components": "6",
+      "max_eccentricity": 0.34,
+      "eta_m": 1.42e-07,
+      "c_ii": 0.885
+    },
+    {
+      "name": "Nu Scorpii",
+      "archetype": "I: Concentric Nodal Shells",
+      "components": "7",
+      "max_eccentricity": 0.56,
+      "eta_m": 2.11e-07,
+      "c_ii": 0.942
+    },
+    {
+      "name": "Beta Capricorni",
+      "archetype": "I: Concentric Nodal Shells",
+      "components": "5",
+      "max_eccentricity": 0.41,
+      "eta_m": 1.89e-07,
+      "c_ii": 0.910
+    },
+    {
+      "name": "Mizar",
+      "archetype": "I: Concentric Nodal Shells",
+      "components": "4",
+      "max_eccentricity": 0.22,
+      "eta_m": 0.95e-07,
+      "c_ii": 0.760
+    },
+    {
+      "name": "The Polaris System",
+      "archetype": "II: Hierarchical Tethers",
+      "components": "3",
+      "max_eccentricity": 0.61,
+      "eta_m": 3.45e-07,
+      "c_ii": 1.224
+    },
+    {
+      "name": "HD 131399",
+      "archetype": "II: Hierarchical Tethers",
+      "components": "3",
+      "max_eccentricity": 0.48,
+      "eta_m": 2.99e-07,
+      "c_ii": 1.085
+    },
+    {
+      "name": "Alpha Centauri Net",
+      "archetype": "II: Hierarchical Tethers",
+      "components": "3",
+      "max_eccentricity": 0.52,
+      "eta_m": 1.15e-07,
+      "c_ii": 0.640
+    },
+    {
+      "name": "HR 6819",
+      "archetype": "II: Hierarchical Tethers",
+      "components": "3",
+      "max_eccentricity": 0.68,
+      "eta_m": 4.12e-07,
+      "c_ii": 1.550
+    },
+    {
+      "name": "Kepler-47",
+      "archetype": "III: Circumbinary Trapping",
+      "components": "2 + 3 Planets",
+      "max_eccentricity": 0.03,
+      "eta_m": 0.78e-08,
+      "c_ii": 0.320
+    },
+    {
+      "name": "Kepler-296",
+      "archetype": "III: Circumbinary Trapping",
+      "components": "2 + 5 Planets",
+      "max_eccentricity": 0.05,
+      "eta_m": 0.92e-08,
+      "c_ii": 0.395
+    },
+    {
+      "name": "Kepler-34",
+      "archetype": "III: Circumbinary Trapping",
+      "components": "2 + 1 Planet",
+      "max_eccentricity": 0.52,
+      "eta_m": 3.11e-07,
+      "c_ii": 1.140
+    },
+    {
+      "name": "Kepler-64 (PH1)",
+      "archetype": "III: Circumbinary Trapping",
+      "components": "4 + 1 Planet",
+      "max_eccentricity": 0.15,
+      "eta_m": 1.56e-07,
+      "c_ii": 0.710
+    },
+    {
+      "name": "GW Orionis",
+      "archetype": "III: Circumbinary Trapping",
+      "components": "3 + Torn Rings",
+      "max_eccentricity": 0.38,
+      "eta_m": 5.88e-07,
+      "c_ii": 2.440
+    },
+    {
+      "name": "GG Tauri A",
+      "archetype": "III: Circumbinary Trapping",
+      "components": "4 + Dust Ring",
+      "max_eccentricity": 0.28,
+      "eta_m": 2.45e-07,
+      "c_ii": 0.980
+    }
+  ]
+}
