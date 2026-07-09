@@ -1,6 +1,7 @@
 """
 OCM-Stellar-Dynamics: Topological Resonance Archetypes
 Module implementing Archetype I: Concentric Nodal Shells (Symmetrical Nested Rings).
+Includes models for Castor, Nu Scorpii, Beta Capricorni, and Mizar.
 """
 
 import numpy as np
@@ -35,7 +36,6 @@ class ConcentricNodalShell:
         Returns:
             float: Effective metric trapping potential.
         """
-        # Standing-wave potential profile along concentric nodal shells
         k_wave = 2.0 * np.pi / np.min(self.shell_radii)
         harmonic_potential = -(inner_core_mass / radius) * np.cos(k_wave * radius)
         return float(harmonic_potential)
@@ -43,7 +43,7 @@ class ConcentricNodalShell:
     def verify_fractal_matrix_split(self, c_ii_weight: float) -> Tuple[bool, float]:
         """
         Verifies if a fractal micro-nodal matrix (c_ij) splits mass evenly 
-        across nested binary pairs (e.g., Castor Aa/Ab, Ba/Bb, Ca/Cb).
+        across nested binary pairs.
         
         Parameters:
             c_ii_weight (float): Micro-nodal matrix weight coefficient.
@@ -51,27 +51,61 @@ class ConcentricNodalShell:
         Returns:
             Tuple[bool, float]: (Is_Stable, Calculated_Symmetry_Ratio)
         """
-        # Mass distribution symmetry ratio across fractal sub-nodes
         symmetry_ratio = c_ii_weight / (self.n_components / 2.0)
         is_stable = 0.15 <= symmetry_ratio <= 0.45
         return is_stable, float(symmetry_ratio)
 
+    def check_precession_suppression(self, mutual_inclination_deg: float, eta_m: float) -> bool:
+        """
+        Evaluates whether manifold viscosity (\eta_M) dampens non-linear orbital torque
+        to prevent orbital plane tilting (precession).
+        """
+        restoration_factor = eta_m * 1e7
+        dampened_inclination_drift = mutual_inclination_deg / (1.0 + restoration_factor)
+        return bool(dampened_inclination_drift < 0.01)
 
-def evaluate_castor_system() -> Dict[str, float]:
-    """
-    Evaluates specific OCM topological parameters for the 6-star Castor matrix.
-    """
-    castor_shell = ConcentricNodalShell(
-        system_name="Castor",
-        n_components=6,
-        shell_radii=[3.0, 4.0, 1000.0]  # Aa/Ab, Ba/Bb, Ca/Cb orbits in AU
-    )
-    
-    is_stable, ratio = castor_shell.verify_fractal_matrix_split(c_ii_weight=0.885)
-    
+
+# --- SYSTEM EVALUATORS FOR ARCHETYPE I ---
+
+def evaluate_castor_system() -> Dict[str, object]:
+    """Evaluates OCM parameters for the 6-star Castor matrix."""
+    castor_shell = ConcentricNodalShell("Castor", 6, [3.0, 4.0, 1000.0])
+    is_stable, ratio = castor_shell.verify_fractal_matrix_split(0.885)
     return {
         "system": "Castor",
         "multiplicity": 6,
         "fractal_symmetry_ratio": ratio,
         "is_topologically_stable": is_stable
+    }
+
+def evaluate_nu_scorpii_system() -> Dict[str, object]:
+    """Evaluates metric-pumped outer standing wave trapping for Nu Scorpii (7 stars)."""
+    nu_scorpii = ConcentricNodalShell("Nu Scorpii", 7, [0.005, 1.4, 47.0, 100.0])
+    pump_pot = nu_scorpii.calculate_harmonic_pumping_potential(inner_core_mass=12.5, radius=47.0)
+    return {
+        "system": "Nu Scorpii",
+        "multiplicity": 7,
+        "outer_standing_wave_potential": pump_pot,
+        "is_trapped_in_outer_ring": bool(pump_pot < 0)
+    }
+
+def evaluate_beta_capricorni_system() -> Dict[str, object]:
+    """Evaluates harmonic shell potential for Beta Capricorni (5 stars)."""
+    beta_cap = ConcentricNodalShell("Beta Capricorni", 5, [0.10, 4.5, 230.0])
+    potential = beta_cap.calculate_harmonic_pumping_potential(inner_core_mass=8.2, radius=230.0)
+    return {
+        "system": "Beta Capricorni",
+        "multiplicity": 5,
+        "outer_harmonic_potential": potential,
+        "is_shell_nested": bool(potential < 0)
+    }
+
+def evaluate_mizar_system() -> Dict[str, object]:
+    """Evaluates plane precession suppression for the 4-star Mizar sheet."""
+    mizar = ConcentricNodalShell("Mizar", 4, [0.5, 0.8, 380.0])
+    is_aligned = mizar.check_precession_suppression(mutual_inclination_deg=0.5, eta_m=0.95e-7)
+    return {
+        "system": "Mizar",
+        "multiplicity": 4,
+        "is_sheet_phase_locked": is_aligned
     }
